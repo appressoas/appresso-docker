@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:10
+
+    ports:
+        - 5432:25187/tcp
+  web:
+    image: awesome:latest
+
+    links:
+        - db
+    volumes:
+        - /Users/eska/dev/ievv_proposalbin:/ievv_proposalbin:rw
+
+    stdin_open: true
+    
+    tty: true
+
+    depends_on:
+        - db
